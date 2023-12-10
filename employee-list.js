@@ -1,8 +1,9 @@
-$(function() {
-    const employees = JSON.parse(localStorage.getItem('employees'));
 
+$(function() {
+    const employees = JSON.parse(localStorage.getItem('employees') || '[]');
+    const combinedData = employees.concat(datasMock);
     $('#employee-table').DataTable({
-        data: employees,
+        data: combinedData,
         columns: [
             { title: 'First Name', data: 'firstName' },
             { title: 'Last Name', data: 'lastName' },
